@@ -24,7 +24,7 @@
             }
         ]
     ],
-    "compact": false,
+    "compact": true,
     "comments": false,
     "sourceMaps": true
 }
