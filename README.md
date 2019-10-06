@@ -15,5 +15,5 @@ C'est un petit tchat en temps réel avec des pseudos (UNIQUE et non senssible à
 * dans un autre terminal, watch du server : `npm run work:server`
 * dans un autre terminal (encore), lancement de docker: `docker-compose up`
 
-Realiser sur base d'une structure de dossier de Becode.
-Realiser par (Haerens Philippe)[https://github.com/haerphi/].
+Realiser sur base d'une structure de dossier de Becode. <br>
+Realiser par [Haerens Philippe][https://github.com/haerphi/].
