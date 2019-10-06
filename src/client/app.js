@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 
-import Game from "./components/Game";
+import Game from "./components/game";
 
 import socketIOClient from "socket.io-client";
 const socket = socketIOClient("https://reactsocketio-livechat.herokuapp.com/");
