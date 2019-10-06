@@ -1,29 +1,56 @@
 import React, {useState} from "react";
-import Form from "./utils/form";
+import Nickname from "./nickname";
+import Chat from "./chat";
+import Loading from "./loading";
 
 const Game = props => {
     const [messages, setMessages] = useState([]);
+    const [showChat, setShowChat] = useState(false);
+    const [showModalNickname, setShowModalNickname] = useState(true);
+    const [showLoading, setShowLoading] = useState(false);
+    const [name, setName] = useState(null);
 
-    //recois un message
+    /* receved part */
+    //validation of the nickname
+    props.socket.on("nickname", data => {
+        setShowLoading(false);
+        if (data === "error") {
+            setShowModalNickname(true);
+        } else {
+            setShowChat(true);
+            setName(data);
+        }
+    });
+
+    //newbe in the room
+    props.socket.on("joined", data => {
+        const newMess = `${data} has joined the room`;
+        setMessages([newMess, ...messages]);
+    });
+    //receve message
     props.socket.on("newMessage", data => {
         setMessages([data, ...messages]);
     });
 
-    //envoie un message
+    /* Send part */
+    //send message
     const sendChat = message => {
         props.socket.emit("newMessage", message);
     };
 
+    //send a nickname
+    const sendNickname = nickname => {
+        setShowLoading(true);
+        setShowModalNickname(false);
+        props.socket.emit("nickname", nickname);
+    };
+
     return (
         <div>
-            <h1>{"Hello, world! plop"}</h1>
-            <Form sendChat={sendChat} />
-            <hr />
-            <ul>
-                {messages.map((message, index) => (
-                    <li key={`m${index + 1}`}>{message}</li>
-                ))}
-            </ul>
+            <h1>{`Hello, ${name || "world"}!`}</h1>
+            <Chat show={showChat} sendChat={sendChat} messages={messages} />
+            <Nickname show={showModalNickname} sendNickname={sendNickname} />
+            <Loading show={showLoading} />
         </div>
     );
 };
