@@ -1,6 +1,8 @@
 # ReactSocketIO-LiveChat
 Ceci est une application dans qui a été réaliser dans le but d'apprendre à utiliser Socket.IO avec React.
-C'est un petit tchat en temps réel avec des pseudos (UNIQUE et non senssible à la casse).
+C'est un petit tchat en temps réel avec des pseudos (UNIQUE et non senssible à la casse). <br>
+L'application a été déployer sur Heroku: <br>
+https://reactsocketio-livechat.herokuapp.com/
 
 ## Installation build/publish
 * clone du projet + se déplacer dans le projet
